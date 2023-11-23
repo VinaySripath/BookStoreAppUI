@@ -1,0 +1,52 @@
+<div class="main">
+  <h1 class="ordertitle">Current Orders</h1>
+  <div *ngFor="let order of currentOrders" class="ordercontainer">
+    <div class="infocontainer">
+      <div class="info">Order Number: {{ order.orderNumber }}</div>
+      <div class="info">Order Value: {{ order.orderValue }}</div>
+      <div class="info">Date: {{ order.orderDate }}</div>
+      <div class="info">Order Status: {{ order.orderStatus }}</div>
+    </div>
+    <div class="containdetails">
+      <div *ngFor="let detail of order.orderDetails" class="detailcontainer">
+        <div class="info">Book Name: {{ detail.bookName }}</div>
+        <div class="info">Quantity: {{ detail.units }}</div>
+      </div>
+    </div>
+    <select #status class="select">
+      <option value="">--Select--</option>
+      <option value="Accepted">Accepted</option>
+      <option value="Dispatched">Dispatched</option>
+      <option value="Delivered">Delivered</option>
+      <option value="Delayed">Delayed</option>
+    </select>
+    <button (click)="doUpdateStatus(status.value, order.orderNumber)">
+      Update Status
+    </button>
+  </div>
+  <h1 class="ordertitle">All Orders</h1>
+  <div *ngFor="let order of allOrders" class="ordercontainer">
+    <div class="infocontainer">
+      <div class="info">Order Number: {{ order.orderNumber }}</div>
+      <div class="info">Order Value: {{ order.orderValue }}</div>
+      <div class="info">Date: {{ order.orderDate }}</div>
+      <div class="info">Order Status: {{ order.orderStatus }}</div>
+    </div>
+    <div class="containdetails">
+      <div *ngFor="let detail of order.orderDetails" class="detailcontainer">
+        <div class="info">Book Name: {{ detail.bookName }}</div>
+        <div class="info">Quantity: {{ detail.units }}</div>
+      </div>
+    </div>
+    <select #status class="select">
+      <option value="">--Select--</option>
+      <option value="Accepted">Accepted</option>
+      <option value="Dispatched">Dispatched</option>
+      <option value="Delivered">Delivered</option>
+      <option value="Delayed">Delayed</option>
+    </select>
+    <button (click)="doUpdateStatus(status.value, order.orderNumber)">
+      Update Status
+    </button>
+  </div>
+</div>

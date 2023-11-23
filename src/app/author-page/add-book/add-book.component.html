@@ -1,0 +1,133 @@
+<body>
+  <div class="container">
+    <form
+      class="form-horizontal"
+      role="form"
+      (ngSubmit)="doAddBook()"
+      #myForm="ngForm"
+    >
+      <h2>Publish Book</h2>
+      <div class="form-group">
+        <label for="title" class="col-sm-3 control-label">Title*</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Title"
+            class="form-control"
+            [(ngModel)]="dto.title"
+            autofocus
+            required
+            #title="ngModel"
+            (change)="doCheckTitle()"
+          />
+        </div>
+        <div
+          *ngIf="title.pristine == false && title.invalid == true"
+          style="color: red"
+        >
+          <p>Title cannot be empty</p>
+        </div>
+        <div *ngIf="isExisting" style="color: red">
+          <p>Book already exists! Please select a different title</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description" class="col-sm-3 control-label"
+          >Description*
+        </label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            id="description"
+            name="description"
+            placeholder="Description"
+            class="form-control"
+            [(ngModel)]="dto.description"
+            required
+            #description="ngModel"
+          />
+        </div>
+        <div
+          *ngIf="description.pristine == false && description.invalid == true"
+          style="color: red"
+        >
+          <p>Description cannot be empty</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price" class="col-sm-3 control-label">Price*</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            id="price"
+            name="price"
+            placeholder="Price"
+            class="form-control"
+            [(ngModel)]="dto.price"
+            required
+            #price="ngModel"
+          />
+        </div>
+        <div
+          *ngIf="price.pristine == false && price.invalid == true"
+          style="color: red"
+        >
+          <p>Price cannot be empty</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pages" class="col-sm-3 control-label">Pages*</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            id="pages"
+            name="pages"
+            placeholder="Pages"
+            class="form-control"
+            [(ngModel)]="dto.pages"
+            required
+            #pages="ngModel"
+          />
+        </div>
+        <div
+          *ngIf="pages.pristine === false && pages.invalid === true"
+          style="color: red"
+        >
+          <p>Pages cannot be empty</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category" class="col-sm-3 control-label">Category* </label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            id="category"
+            name="category"
+            placeholder="Category"
+            class="form-control"
+            [(ngModel)]="dto.category"
+            required
+            #category="ngModel"
+          />
+          <div
+            *ngIf="category.pristine == false && category.invalid == true"
+            style="color: red"
+          >
+            <p>Category is required</p>
+          </div>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn register btn-block"
+        [disabled]="!myForm.form.valid"
+      >
+        Publish Book
+      </button>
+    </form>
+    <!-- /form -->
+  </div>
+  <!-- ./container -->
+</body>

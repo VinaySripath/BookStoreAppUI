@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { OrderService } from 'src/app/Service/order.service';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css'],
+  selector: 'app-view-order',
+  templateUrl: './view-order.component.html',
+  styleUrls: ['./view-order.component.css'],
 })
-export class OrdersComponent {
+export class ViewOrderComponent {
   __orderService: OrderService;
   currentOrders: any[] = [];
   allOrders: any[] = [];
@@ -14,9 +14,9 @@ export class OrdersComponent {
     this.__orderService = __orderService;
   }
   ngOnInit() {
-    this.__orderService.doGetAllCustomerOrders().subscribe(
+    this.__orderService.doGetAllOrders().subscribe(
       (data) => {
-        console.log(data.orderDetails);
+        console.log(data);
         this.allOrders = [...data];
         for (let order of data) {
           if (order.orderStatus === 'placed successfully') {
@@ -29,5 +29,17 @@ export class OrdersComponent {
         console.log(err);
       }
     );
+  }
+  doUpdateStatus(status: string, orderNumber: number) {
+    if (status != '') {
+      this.__orderService.doUpdateOrderStatus(status, orderNumber).subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 }

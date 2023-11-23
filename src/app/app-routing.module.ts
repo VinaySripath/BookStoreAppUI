@@ -13,6 +13,10 @@ import { AdminMainComponent } from './admin-page/admin-main/admin-main.component
 import { InventoryComponent } from './admin-page/inventory/inventory.component';
 import { CartComponent } from './user-page/cart/cart.component';
 import { OrdersComponent } from './user-page/orders/orders.component';
+import { ViewOrderComponent } from './admin-page/view-order/view-order.component';
+import { AddBookComponent } from './author-page/add-book/add-book.component';
+import { BooksComponent } from './author-page/books/books.component';
+import { BookOrdersComponent } from './author-page/book-orders/book-orders.component';
 
 const routes: Routes = [
   {
@@ -44,6 +48,20 @@ const routes: Routes = [
       {
         path: 'authorhome',
         component: AuthorPageComponent,
+        children: [
+          {
+            path: '',
+            component: AddBookComponent,
+          },
+          {
+            path: 'books',
+            component: BooksComponent,
+          },
+          {
+            path: 'order',
+            component: BookOrdersComponent,
+          },
+        ],
       },
       {
         path: 'adminhome',
@@ -56,6 +74,10 @@ const routes: Routes = [
           {
             path: 'inventory',
             component: InventoryComponent,
+          },
+          {
+            path: 'order',
+            component: ViewOrderComponent,
           },
         ],
       },

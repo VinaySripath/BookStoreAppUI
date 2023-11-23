@@ -1,35 +1,33 @@
-<!-- <div class="main">
+<div class="main">
   <div class="content">
-    <h1>Author Pending</h1>
+    <h1>Books Low In Stock</h1>
     <div *ngIf="bookbyquantity.length === 0">
       <h4>No Pending Requests</h4>
     </div>
-    <div class="containauthorcard" *ngFor="let a of bookbyquantity">
-      <div class="authorcard">
-        <div class="inforow" #AuthorId>Author Id {{ a.userCode }}</div>
-        <div class="inforow">Author Name {{ a.username }}</div>
-        <div class="inforow">City : {{ a.city }}</div>
-        <div class="inforow">Country : {{ a.country }}</div>
-        <div class="inforow">Email : {{ a.email }}</div>
-        <div class="inforow">Phone : {{ a.phone }}</div>
-        <div class="inforow">Region : {{ a.region }}</div>
-        <div class="inforow">Native Language : {{ a.nativeLanguage }}</div>
-        <input type="number" />
-        <button (click)="doAdd(a.userCode)">Place Order</button>
+    <div class="containbookcard" *ngFor="let book of bookbyquantity">
+      <div class="bookcard">
+        <div class="title">{{ book.title }}</div>
+        <div class="inforow">Price: {{ book.price | currency : "₹" }}</div>
+        <div class="inforow">Genre: {{ book.category }}</div>
+        <div class="inforow">
+          Available Quantity: {{ book.availableQuantity }}
+        </div>
+        <input type="text" #quantity />
+        <button (click)="doAdd(quantity.value, book.title)">Place Order</button>
       </div>
     </div>
-    <h1>All Authors</h1>
-    <div class="containauthorcard" *ngFor="let a of allbooks">
-      <div class="authorcard">
-        <div class="inforow" #AuthorId>Author Id {{ a.userCode }}</div>
-        <div class="inforow">Author Name {{ a.username }}</div>
-        <div class="inforow">City : {{ a.city }}</div>
-        <div class="inforow">Country : {{ a.country }}</div>
-        <div class="inforow">Email : {{ a.email }}</div>
-        <div class="inforow">Phone : {{ a.phone }}</div>
-        <div class="inforow">Region : {{ a.region }}</div>
-        <div class="inforow">Native Language : {{ a.nativeLanguage }}</div>
+    <h1>All Books</h1>
+    <div class="containbookcard" *ngFor="let book of allbooks">
+      <div class="bookcard">
+        <div class="title">{{ book.title }}</div>
+        <div class="inforow">Price: {{ book.price | currency : "₹" }}</div>
+        <div class="inforow">Genre: {{ book.category }}</div>
+        <div class="inforow">
+          Available Quantity: {{ book.availableQuantity }}
+        </div>
+        <input type="text" #quantity />
+        <button (click)="doAdd(quantity.value, book.title)">Place Order</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>

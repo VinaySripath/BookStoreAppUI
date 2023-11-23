@@ -13,7 +13,7 @@
     </div>
   </div>
   <h1 class="ordertitle">All Orders</h1>
-  <div *ngFor="let order of currentOrders" class="ordercontainer">
+  <div *ngFor="let order of allOrders" class="ordercontainer">
     <div class="infocontainer">
       <div class="info">Order Number: {{ order.orderNumber }}</div>
       <div class="info">Order Value: {{ order.orderValue }}</div>

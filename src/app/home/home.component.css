@@ -3,4 +3,7 @@
 }
 .topbar {
   background-color: #002626;
+  position: static;
+  top: 0;
+  width: 100%;
 }

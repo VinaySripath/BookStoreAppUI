@@ -1,0 +1,18 @@
+<div>
+  <div>
+    <h1 class="ordertitle">All Orders</h1>
+    <h4>Total Sales: {{ totalSales | currency : "₹" }}</h4>
+  </div>
+  <div *ngFor="let order of allOrders" class="ordercontainer">
+    <div class="infocontainer">
+      <div class="info">Order Number: {{ order.orderNumber }}</div>
+      <div class="info">Order Value: {{ order.orderValue }}</div>
+      <div class="info">Date: {{ order.orderDate }}</div>
+      <div class="info">Order Status: {{ order.orderStatus }}</div>
+    </div>
+    <div *ngFor="let detail of order.orderDetails" class="detailcontainer">
+      <div class="info">Book Name: {{ detail.bookName }}</div>
+      <div class="info">Quantity: {{ detail.units }}</div>
+    </div>
+  </div>
+</div>
