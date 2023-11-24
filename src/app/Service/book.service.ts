@@ -9,7 +9,8 @@ import { AddBook } from '../DTO/add-book';
 export class BookService {
   constructor(private api: HttpClient) {}
   contextPath = 'http://localhost:2002/';
-  loadBooksEndPoint = this.contextPath + 'user/allbooks';
+  loadBooksEndPoint = this.contextPath + 'admin/allbooks';
+  loadBooksUserEndPoint = this.contextPath + 'user/allbooks';
   loadBooksByAuthorEndPoint = this.contextPath + 'author/viewbook/author';
   loadBooksByQuantityEndPoint = this.contextPath + 'admin/allbooks/quantity';
   loadFeedBackEndPoint = this.contextPath + 'user/viewreview/book';
@@ -18,7 +19,7 @@ export class BookService {
   publishBookEndPoint = this.contextPath + 'author/add';
 
   doLoadBooks(): Observable<any> {
-    return this.api.get<any>(`${this.loadBooksEndPoint}`);
+    return this.api.get<any>(`${this.loadBooksUserEndPoint}`);
   }
 
   doLoadAuthorBooks(authorname: string): Observable<any> {
